@@ -1,6 +1,7 @@
 package com.lab.xxx.chatbot.api;
 
 import com.google.cloud.dialogflow.v2beta1.EntityTypesClient;
+import com.google.cloud.dialogflow.v2beta1.Intent;
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest;
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse;
 import com.lab.xxx.chatbot.api.model.DFRequestBody;
@@ -26,15 +27,19 @@ public class RoutingController {
     @RequestMapping(value = "/query", method = RequestMethod.POST)
     public String executeAction(@RequestBody DFRequestBody body) {
         System.out.println("custom intent called.");
-        System.out.println("Recived body: " + body);
+        System.out.println("Recived body: " + body.getQuery());
 
-        return "";
+        return "Ihre Anfrage war erfolgreich.";
 
     }
 
     @RequestMapping(value = "/api", method = RequestMethod.POST)
     public WebhookResponse postApi(@RequestBody WebhookRequest request){
-        request.getQueryResult().getAction();
-        return WebhookResponse.newBuilder().build();
+
+        System.out.println("V2 API Intend called! action:" + request.getQueryResult().getAction());
+        return WebhookResponse.newBuilder().addFulfillmentMessages(
+                Intent.Message.newBuilder().setText(
+                Intent.Message.Text.newBuilder().addText("MAd MAx 93").build()
+        ).build()).build();
     }
 }
