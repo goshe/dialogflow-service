@@ -24,6 +24,7 @@ public class RoutingController {
     }
 
     @RequestMapping(value = "/api", method = RequestMethod.POST)
+    @ResponseBody
     public String executeAction(@RequestBody String body) {
         System.out.println("custom intent called.");
         System.out.println("Recived body: " + body);
