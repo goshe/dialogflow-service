@@ -33,12 +33,19 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <dependency>
-            <groupId>ai.api</groupId>
-            <artifactId>libai</artifactId>
-            <version>1.6.12</version>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-dialogflow</artifactId>
+            <version>0.33.0-alpha</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.api.grpc</groupId>
+            <artifactId>grpc-google-cloud-dialogflow-v2beta1</artifactId>
+            <version>0.1.28</version>
+        </dependency>
+
     </dependencies>
 
     <build>
