@@ -1,7 +1,6 @@
 package com.lab.xxx.chatbot.api;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Properties;
@@ -25,12 +24,14 @@ public class RoutingController {
     @ResponseBody
     public String executeAction(@RequestBody String body) {
         System.out.println("custom intent called.");
-        System.out.println("Recived body: " + body);
-        Properties data = GSON.fromJson(body, Properties.class);
-
-        data.list(System.out);
-
-        String response = createJSONResponse("Response from Service !");
+        // System.out.println("Recived body: " + body);
+        JsonParser parser = new JsonParser();
+        JsonObject obj = parser.parse(body).getAsJsonObject();
+        JsonObject queryResult = obj.get("queryResult").getAsJsonObject();
+        String action = queryResult.get("action").getAsString();
+        String paramters = queryResult.get("parameters").getAsString();
+        
+        String response = createJSONResponse("Service called, action: " + action + "\n parameters: " + paramters);
         System.out.println("Will send response " + response);
         return response;
     }
