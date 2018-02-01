@@ -14,8 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RoutingController {
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String root() {
+        return "Hello from routing service.";
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    }
+
+    @RequestMapping(value = "/query", method = RequestMethod.POST)
     public String executeAction(@RequestBody DFRequestBody body) {
         System.out.println("custom intent called.");
         System.out.println("Recived body: " + body);
