@@ -33,7 +33,7 @@ public class RoutingController {
                 "         \"text\": [\"Ja, wir haben am 2018-02-05/2018-02-11 ein 906M für den Einsatz in 63225 verfügbar.\"]\n" +
                 "       }\n" +
                 "}]}";
-        System.out.println("Will send response" + response);
+        System.out.println("Will send response " + response);
         return response;
     }
 
