@@ -1,0 +1,6 @@
+com/lab/xxx/chatbot/api/RoutingController.class
+com/lab/xxx/chatbot/api/model/DialogflowRequest.class
+com/lab/xxx/chatbot/api/Application.class
+com/lab/xxx/chatbot/api/model/DFRequestBody.class
+com/lab/xxx/chatbot/api/model/BotMessages.class
+com/lab/xxx/chatbot/api/model/DFResponse.class
