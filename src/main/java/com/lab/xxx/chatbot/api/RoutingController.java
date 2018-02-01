@@ -5,10 +5,8 @@ import com.google.cloud.dialogflow.v2beta1.Intent;
 import com.google.cloud.dialogflow.v2beta1.WebhookRequest;
 import com.google.cloud.dialogflow.v2beta1.WebhookResponse;
 import com.lab.xxx.chatbot.api.model.DFRequestBody;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Controller which routes requests for the Zeppelin Chatbot API.
@@ -25,16 +23,17 @@ public class RoutingController {
     }
 
     @RequestMapping(value = "/query", method = RequestMethod.POST)
-    public String executeAction(@RequestBody DFRequestBody body) {
+    public String executeAction(@RequestBody String body) {
         System.out.println("custom intent called.");
-        System.out.println("Recived body: " + body.getQuery());
+        System.out.println("Recived body: " + body);
 
         return "Ihre Anfrage war erfolgreich.";
 
     }
 
+
     @RequestMapping(value = "/api", method = RequestMethod.POST)
-    public WebhookResponse postApi(@RequestBody WebhookRequest request){
+    public WebhookResponse postApi(@ModelAttribute WebhookRequest request){
 
         System.out.println("V2 API Intend called! action:" + request.getQueryResult().getAction());
         return WebhookResponse.newBuilder().addFulfillmentMessages(
