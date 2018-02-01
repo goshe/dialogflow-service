@@ -27,8 +27,7 @@ public class RoutingController {
     public String executeAction(@RequestBody String body) {
         System.out.println("custom intent called.");
         System.out.println("Recived body: " + body);
-
-        String response = WebhookResponse.newBuilder().setFulfillmentText("This is a Service response").build().toString();
+        String response = "{\"fulfillmentText\":\"Response from Service.\"}";
         System.out.println("Will send response" + response);
         return response;
     }
