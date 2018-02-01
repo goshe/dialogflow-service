@@ -27,7 +27,12 @@ public class RoutingController {
     public String executeAction(@RequestBody String body) {
         System.out.println("custom intent called.");
         System.out.println("Recived body: " + body);
-        String response = "{\"fulfillmentText\":\"Response from Service.\"}";
+        String response = "{\"fulfillmentText\": \"Ja, wir haben am 2018-02-05/2018-02-11 ein 906M für den Einsatz in 63225 verfügbar.\",\n" +
+                "     \"fulfillmentMessages\": [{\n" +
+                "       \"text\": {\n" +
+                "         \"text\": [\"Ja, wir haben am 2018-02-05/2018-02-11 ein 906M für den Einsatz in 63225 verfügbar.\"]\n" +
+                "       }\n" +
+                "}]}";
         System.out.println("Will send response" + response);
         return response;
     }
