@@ -30,6 +30,9 @@ public class RoutingController {
         JsonObject queryResult = obj.get("queryResult").getAsJsonObject();
         String action = queryResult.get("action").getAsString();
         String parameters = queryResult.get("parameters").getAsJsonObject().toString();
+        // JSON escaping
+        parameters = parameters.replaceAll("\"", "\\\"");
+
 
         String response = createJSONResponse("Service called, action: " + action + " parameters: " + parameters);
         System.out.println("Will send response " + response);
