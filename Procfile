@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar target/chatbot-api-1.0.0-SNAPSHOT.jar
+web:    java $JAVA_OPTS -jar target/chatbot-api-1.0.0-SNAPSHOT.jar --port 8080
