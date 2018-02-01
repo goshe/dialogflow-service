@@ -29,9 +29,9 @@ public class RoutingController {
         JsonObject obj = parser.parse(body).getAsJsonObject();
         JsonObject queryResult = obj.get("queryResult").getAsJsonObject();
         String action = queryResult.get("action").getAsString();
-        String paramters = queryResult.get("parameters").getAsString();
-        
-        String response = createJSONResponse("Service called, action: " + action + "\n parameters: " + paramters);
+        String parameters = queryResult.get("parameters").getAsJsonObject().toString();
+
+        String response = createJSONResponse("Service called, action: " + action + "\n parameters: " + parameters);
         System.out.println("Will send response " + response);
         return response;
     }
